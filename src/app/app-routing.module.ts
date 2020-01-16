@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ChartsComponent } from './charts/charts.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: "", pathMatch: "full", component: ChartsComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
