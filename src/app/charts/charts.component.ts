@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../services/data.service";
 import { Tweet } from "../models/tweet";
-import { TweetRaw } from "../models/tweetRaw";
 
 import * as moment from "moment";
 
@@ -33,9 +32,4 @@ export class ChartsComponent implements OnInit {
       console.log(this.chartData)
     });
   }
-
-  // mapDate = (d: TweetRaw) => {
-  //   let dateTime = d.created_at
-  //   let x = moment(dateTime, "MM-DD-YYYY HH:mm:ss")
-  // }
 }
