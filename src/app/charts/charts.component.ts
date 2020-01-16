@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "../services/data.service";
 import { Tweet } from "../models/tweet";
+import { TweetRaw } from "../models/tweetRaw";
+
+import * as moment from "moment";
 
 @Component({
   selector: "app-charts",
@@ -16,11 +19,12 @@ export class ChartsComponent implements OnInit {
     this._dataService.getTweetData().then(data => {
       this.chartData = [];
       data = data.slice(0, 250);
+      console.log(data)
       data.map(d => {
         return this.chartData.push({
           source: d.source,
           text: d.text,
-          createdAt: new Date(d.created_at),
+          createdAt: moment(d.created_at, "MM-DD-YYYY HH:mm:ss"),
           retweetCount: +d.retweet_count,
           favoriteCount: +d.favorite_count,
           polarity: +d.sentiment_polarity
@@ -29,4 +33,9 @@ export class ChartsComponent implements OnInit {
       console.log(this.chartData)
     });
   }
+
+  // mapDate = (d: TweetRaw) => {
+  //   let dateTime = d.created_at
+  //   let x = moment(dateTime, "MM-DD-YYYY HH:mm:ss")
+  // }
 }
